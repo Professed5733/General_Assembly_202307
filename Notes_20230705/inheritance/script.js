@@ -1,42 +1,60 @@
-class Animal {
-  constructor(name, type, numberOfLegs = 4) {
-    (this.name = name), (this.type = type), (this.numberOfLegs = numberOfLegs);
+class Character {
+  constructor(hitpoints = 100, weapon = false, movement = 100) {
+    (this.hitpoints = hitpoints),
+      (this.weapon = weapon),
+      (this.movement = movement);
   }
-
-  greet() {
-    console.log("It is a ${this.name}");
-  }
-
-  animalType() {
-    console.log("It is a ${this.type}");
-  }
-
-  // setName(name){
-  //   this.name = name;
-
-  //   getName(){
-  //     return this.name;
-  //   }
-
-  set name(name) {
-    this.name = name;
-  }
-
-  get name() {
-    return this._name;
+  damage(amount) {
+    this.hitpoints -= amount;
+    return this.hitpoints;
   }
 }
 
-const dog = new AnimationPlaybackEvent("Buster", "Dog", 4);
-const dog1 = new Animal("Tommy", "Dog", 4);
+class Worker extends Character {
+  constructor(strength) {
+    super();
+    this.strength = strength;
+  }
+}
 
-dog.name = "";
-console.log(dog.name);
-// dog.setName("some name");
-// console.log(dog.getName());
+class Warrior extends Character {
+  constructor(
+    hitpoints = 300,
+    weapon = true,
+    movement = 20,
+    weaponDamage = 20
+  ) {
+    //super(hitpoints, weapon, movement);
+    super();
+    this.weaponDamage = weaponDamage;
+  }
 
-dog.greet();
-dog1.greet();
+  fight() {
+    return Math.floor(Math.random() * this.weaponDamage);
+  }
 
-dog.animalType();
-dog1.animalType();
+  damage(amount) {
+    this.hitpoints = his.hitpoints - (amount - 10);
+    return this.hitpoints;
+  }
+}
+
+const warrior1 = new Warrior();
+const worker1 = new Worker();
+
+const damage = warrior1.fight();
+worker1.damage(damage);
+
+console.log(
+  `Warrior hit worker for ${damage}. Worker's hitpoint now is ${worker1.hitpoints}`
+);
+
+// class SomeClass {
+//   static someVariable = "one";
+
+//   static someFunction() {
+//     return "static function";
+//   }
+// }
+
+// SomeClass.someFunction();
