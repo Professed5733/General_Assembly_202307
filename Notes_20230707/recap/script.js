@@ -20,6 +20,10 @@ nums.forEach(print);
 //     console.log(num)
 // }
 
+nums.forEach(function (print) {
+  console.log(print);
+});
+
 console.log(nums.map(greaterThan18));
 
 let total = nums[0];
