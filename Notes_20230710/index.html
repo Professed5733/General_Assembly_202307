@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #object {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="object"></div>
+
+    <script>
+      // Get the object element
+      var object = document.getElementById("object");
+
+      // Set the initial position and movement variables
+      var position = 0;
+      var direction = "right";
+
+      // Function to move the object
+      function moveObject() {
+        if (direction === "right") {
+          position += 1; // Adjust the movement speed as needed
+          object.style.left = position + "px";
+          if (position >= 200) {
+            // Adjust the stopping point as needed
+            direction = "stop";
+          }
+        }
+      }
+
+      // Call the moveObject function repeatedly using setInterval
+      var interval = setInterval(moveObject, 50); // Adjust the interval timing as needed
+    </script>
+  </body>
+</html>
